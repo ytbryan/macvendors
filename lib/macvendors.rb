@@ -56,7 +56,7 @@ module MacVendors
     else
       puts "something went wrong."
     end
-    return answer
+    return name[hash[value]]
   end
 
   def self.find string
