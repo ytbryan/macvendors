@@ -10,6 +10,12 @@ module MacVendors
     package_name 'macvendors'
     default_task :help
 
+
+    desc :setup, "set it up"
+    def setup 
+      MacVendors.setup
+    end
+
     desc :find, "find the vendor for this mac address"
     def find value
       MacVendors.find(value)
@@ -46,17 +52,25 @@ module MacVendors
   end
 
   def self.search value
-    path = "/Users/ytbryan/.macvendors/oui.csv"
-    answer = CSV.read(path,:headers=> true, :encoding => "ISO8859-1:utf-8") #TODO: is this a data
-    column = answer["Assignment"]
-    name = answer["Organization Name"]
+    # path = "/Users/ytbryan/.macvendors/oui.csv"
+    # answer = CSV.read(path,:headers=> true, :encoding => "ISO8859-1:utf-8") #TODO: is this a data
+    column = @answer["Assignment"]
+    name = @answer["Organization Name"]
     hash = Hash[column.map.with_index.to_a]
+    final_answer = ""
     if hash[value] != nil
-      puts name[hash[value]]
+      final_answer =  name[hash[value]]
     else
-      puts "something went wrong."
+      final_answer = nil # "something went wrong."
     end
-    return name[hash[value]]
+    return final_answer
+  end
+
+
+
+  def self.setup
+    path = "/Users/ytbryan/.macvendors/oui.csv"
+    @answer = CSV.read(path,:headers=> true, :encoding => "ISO8859-1:utf-8") #TODO: is this a data
   end
 
   def self.find string
