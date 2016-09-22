@@ -49,8 +49,6 @@ module MacVendors
   end
 
   def self.search value
-    # path = "/Users/ytbryan/.macvendors/oui.csv"
-    # answer = CSV.read(path,:headers=> true, :encoding => "ISO8859-1:utf-8") #TODO: is this a data
     column = @answer["Assignment"]
     name = @answer["Organization Name"]
     hash = Hash[column.map.with_index.to_a]
@@ -74,7 +72,6 @@ module MacVendors
     string = string.gsub("-", "")
     return search(string[0..5].upcase)
   end
-
 
   def self.find string
     string = string.gsub(":", "")
