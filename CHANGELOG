@@ -1,3 +1,7 @@
+## [0.0.2]
+### Edited
+- Fix the slowness when querying multiple mac addresses. [76b2ccaefe7fb25ade51de4e368f24fdda7656ad]
+
 ## [0.0.1]
 ### Added
 - macvendors find, update  [05941ef]

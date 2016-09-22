@@ -10,24 +10,21 @@ module MacVendors
     package_name 'macvendors'
     default_task :help
 
-
-    desc :setup, "set it up"
-    def setup 
-      MacVendors.setup
-    end
-
     desc :find, "find the vendor for this mac address"
     def find value
-      MacVendors.find(value)
+      MacVendors.setup
+      puts MacVendors.find2(value)
     end
 
     desc :update, "update/replace the mac address csv from ieee"
     def update
+      MacVendors.setup
       MacVendors.update()
     end
 
     desc :install, "install your first oui.csv"
     def install
+      MacVendors.setup
       MacVendors.download()
     end
 
@@ -66,12 +63,18 @@ module MacVendors
     return final_answer
   end
 
-
-
   def self.setup
     path = "/Users/ytbryan/.macvendors/oui.csv"
     @answer = CSV.read(path,:headers=> true, :encoding => "ISO8859-1:utf-8") #TODO: is this a data
   end
+
+  def self.find2 string
+    MacVendors.setup
+    string = string.gsub(":", "")
+    string = string.gsub("-", "")
+    return search(string[0..5].upcase)
+  end
+
 
   def self.find string
     string = string.gsub(":", "")
