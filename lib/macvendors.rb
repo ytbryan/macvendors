@@ -33,7 +33,7 @@ module MacVendors
   private
 
   def self.update
-    path_to_file = "/Users/ytbryan/.macvendors/oui.csv"
+    path_to_file = ".macvendors/oui.csv"
     File.delete(path_to_file) if File.exist?(path_to_file)
     puts "oui.csv removed."
     MacVendors.download()
@@ -42,7 +42,7 @@ module MacVendors
 
   def self.download
     Dir.mkdir ".macvendors" if Dir[".macvendors"] == nil
-    open("/Users/ytbryan/.macvendors/oui.csv", 'wb') do |file|
+    open(".macvendors/oui.csv", 'wb') do |file|
       file << open('http://standards-oui.ieee.org/oui/oui.csv').read
     end
     puts "downloaded oui.csv"
@@ -62,7 +62,7 @@ module MacVendors
   end
 
   def self.setup
-    path = "/Users/ytbryan/.macvendors/oui.csv"
+    path = ".macvendors/oui.csv"
     @answer = CSV.read(path,:headers=> true, :encoding => "ISO8859-1:utf-8") #TODO: is this a data
   end
 
