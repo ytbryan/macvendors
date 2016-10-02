@@ -62,7 +62,7 @@ module MacVendors
   end
 
   def self.setup
-    path = "#{Dir.root}/.macvendors/oui.csv"
+    path = "#{Dir.home}/.macvendors/oui.csv"
     @answer = CSV.read(path,:headers=> true, :encoding => "ISO8859-1:utf-8") #TODO: is this a data
   end
 
