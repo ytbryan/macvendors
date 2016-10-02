@@ -1,4 +1,5 @@
 require "macvendors/version"
+require 'digest/md5'
 require 'open-uri'
 require 'thor'
 require 'csv'
@@ -32,19 +33,19 @@ module MacVendors
   private
 
   def self.update
-    path_to_file = ".macvendors/oui.csv"
+    path_to_file = "#{Dir.home}/.macvendors/oui.csv"
     File.delete(path_to_file) if File.exist?(path_to_file)
-    puts "vendors removed."
+    puts "oui.csv removed."
     MacVendors.download()
   end
 
 
   def self.download
-    Dir.mkdir ".macvendors" if Dir[".macvendors"] == nil
-    open(".macvendors/oui.csv", 'wb') do |file|
+    Dir.mkdir ".macvendors" if Dir["#{Dir.home}/.macvendors"] == nil
+    open("#{Dir.home}/.macvendors/oui.csv", 'wb') do |file|
       file << open('http://standards-oui.ieee.org/oui/oui.csv').read
     end
-    puts "downloaded vendors"
+    puts "downloaded oui.csv"
   end
 
   def self.search value
@@ -61,7 +62,7 @@ module MacVendors
   end
 
   def self.setup
-    path = ".macvendors/oui.csv"
+    path = "#{Dir.root}/.macvendors/oui.csv"
     @answer = CSV.read(path,:headers=> true, :encoding => "ISO8859-1:utf-8") #TODO: is this a data
   end
 
