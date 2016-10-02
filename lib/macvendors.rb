@@ -40,7 +40,7 @@ module MacVendors
 
 
   def self.download
-    Dir.mkdir "#{Dir.home}/.macvendors" if Dir["#{Dir.home}/.macvendors"] == nil
+    Dir.mkdir "#{Dir.home}/.macvendors" if File.directory?("#{Dir.home}/.macvendors") == nil
     open("#{Dir.home}/.macvendors/oui.csv", 'wb') do |file|
       file << open('http://standards-oui.ieee.org/oui/oui.csv').read
     end
