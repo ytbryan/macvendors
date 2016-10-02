@@ -22,7 +22,7 @@ module MacVendors
       MacVendors.update()
     end
 
-    desc :install, "install your first oui.csv"
+    desc :install, "install your first vendors"
     def install
       MacVendors.download()
     end
