@@ -11,5 +11,5 @@ MacVendors.setup
 
 #output
 mac_addresses.times.each_with_index do |index, row|
-MacVendors.find(row)
+csv << MacVendors.find(row)
 end

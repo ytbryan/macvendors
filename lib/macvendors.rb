@@ -24,7 +24,6 @@ module MacVendors
 
     desc :install, "install your first oui.csv"
     def install
-      MacVendors.setup
       MacVendors.download()
     end
 
@@ -35,7 +34,7 @@ module MacVendors
   def self.update
     path_to_file = "#{Dir.home}/.macvendors/oui.csv"
     File.delete(path_to_file) if File.exist?(path_to_file)
-    puts "oui.csv removed."
+    puts "vendors removed."
     MacVendors.download()
   end
 
@@ -45,7 +44,7 @@ module MacVendors
     open("#{Dir.home}/.macvendors/oui.csv", 'wb') do |file|
       file << open('http://standards-oui.ieee.org/oui/oui.csv').read
     end
-    puts "downloaded oui.csv"
+    puts "downloaded vendors"
   end
 
   def self.search value
