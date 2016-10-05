@@ -8,7 +8,7 @@ No need for an external api. You can also extend it in your ruby code.
 
 # How mac address works?
 
-Answer: [Hastur](http://superuser.com/users/257269/hastur) http://superuser.com/a/1093431
+Source: [Hastur](http://superuser.com/users/257269/hastur) http://superuser.com/a/1093431
 
 ## Installation
 
@@ -50,32 +50,6 @@ Or install it yourself as:
   MacVendors.update() //update the oui file
 
   ```
-
-## Installing thor
-
-```
-  cd dependencies
-  gem install --local thor-0.19.1.gem
-```
-
-
-## Installing macvendors without internet connection
-
-- Download the macvendors zip file at
-- extract it onto your desktop or your favourite location
-- go into the extract folder and find macvendors-0.0.2.gem
-- go to your ruby console. type gem install --local macvendors-0.0.2.gem
-
-![MacVendors](instructions/1.png "MacVendors")
-
-- type `macvendors`
-
-![MacVendors](instructions/2.png "MacVendors")
-
-- type `macvendors install`
-
-![MacVendors](instructions/3.png "MacVendors")
-
 
 
 ## Development

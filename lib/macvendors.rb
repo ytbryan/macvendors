@@ -1,4 +1,5 @@
 require "macvendors/version"
+require 'digest/md5'
 require 'open-uri'
 require 'thor'
 require 'csv'
